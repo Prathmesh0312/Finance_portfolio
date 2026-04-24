@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prathmesh Pawar | Financial Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #1a1a1a;
+            --ink-light: #4a4a4a;
+            --ink-lighter: #6a6a6a;
+            --cream: #faf8f4;
+            --cream-dark: #f0ede5;
+            --accent: #2d5f4f;
+            --accent-bright: #3a7a64;
+            --rust: #b85c38;
+            --gold: #d4a574;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(45, 95, 79, 0.03) 100%);
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeSlideDown 0.8s ease-out;
+        }
+
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(48px, 8vw, 92px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: var(--ink);
+            animation: fadeSlideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tagline {
+            font-size: clamp(20px, 3vw, 28px);
+            line-height: 1.5;
+            color: var(--ink-light);
+            max-width: 700px;
+            margin-bottom: 40px;
+            animation: fadeSlideUp 0.8s ease-out 0.4s both;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+            gap: 20px;
+            margin-top: 50px;
+            animation: fadeSlideUp 0.8s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-lighter);
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value:hover {
+            color: var(--rust);
+        }
+
+        .section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--cream-dark);
+            position: absolute;
+            top: -60px;
+            left: -10px;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--ink-light);
+            max-width: 600px;
+        }
+
+        .impact-story {
+            background: white;
+            border-radius: 2px;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .company-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .tenure {
+            font-size: 13px;
+            color: var(--ink-lighter);
+            background: var(--cream);
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .role-description {
+            font-size: 17px;
+            color: var(--accent-bright);
+            font-weight: 600;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .story-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--ink-light);
+            margin-bottom: 30px;
+        }
+
+        .metrics-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .metric {
+            text-align: left;
+        }
+
+        .metric-value {
+            font-family: 'Crimson Pro', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--ink-lighter);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .expertise-card {
+            background: white;
+            padding: 32px;
+            border-radius: 2px;
+            border-top: 3px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .expertise-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .expertise-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .expertise-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--ink-light);
+        }
+
+        .cta-section {
+            background: var(--ink);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(58, 122, 100, 0.15) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--accent-bright);
+            color: white;
+            border: 2px solid var(--accent-bright);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent-bright);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--ink-lighter);
+            background: var(--cream-dark);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 80px 24px;
+            }
+
+            .section {
+                padding: 60px 24px;
+            }
+
+            .section-number {
+                font-size: 80px;
+                top: -40px;
+            }
+
+            .impact-story {
+                padding: 32px 24px;
+            }
+
+            .metrics-showcase {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 60px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="eyebrow">Financial Analyst & Strategist</div>
+            <h1>Turning complex financial data into growth stories</h1>
+            <p class="tagline">I specialize in transforming messy portfolios into streamlined forecasting machines—uncovering hidden costs, optimizing margin structure, and building the financial frameworks that power smarter decisions.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label">Location</span>
+                    <span class="contact-value">Syracuse, NY</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:prathamesh.p@techsmail.com" class="contact-value">prathamesh.p@techsmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <a href="tel:+13154189993" class="contact-value">(315) 418-9993</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Connect</span>
+                    <a href="https://www.linkedin.com/in/prathmeshpawar" target="_blank" class="contact-value">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-number">01</div>
+            <h2 class="section-title">What I bring to the table</h2>
+            <p class="section-subtitle">Over four years reshaping how organizations plan, forecast, and allocate resources across healthcare supply chains and financial services.</p>
+        </div>
+
+        <div class="impact-story">
+            <div class="story-meta">
+                <h3 class="company-name">Cardinal Health</h3>
+                <span class="tenure">Currently Building</span>
+            </div>
+            <p class="role-description">Leading financial strategy for a $180M medical segment</p>
+            <p class="story-text">
+                I'm currently architecting the financial backbone for Cardinal Health's Medical Segment—a sprawling portfolio where precision forecasting directly impacts pricing power and profitability. My focus? Building driver-based models that cut through complexity and reveal what's actually moving the business. By reimagining how we track cost-to-serve and volume dynamics, I helped sharpen our rolling forecasts and free up millions for reinvestment into high-margin opportunities.
+            </p>
+            <p class="story-text">
+                The work spans everything from scenario planning for distribution costs to building live dashboards that give leadership instant visibility into margin performance. I partner closely with accounting, tax, and segment finance teams to ensure every number aligns with compliance standards while supporting strategic decisions. It's meticulous work that connects monthly variance analysis to multi-year capital allocation.
+            </p>
+            <div class="metrics-showcase">
+                <div class="metric">
+                    <span class="metric-value">14%</span>
+                    <span class="metric-label">Forecast precision gain</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$6.5M</span>
+                    <span class="metric-label">Capital redirected</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$1.1M</span>
+                    <span class="metric-label">Cost savings identified</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">22%</span>
+                    <span class="metric-label">Faster decisions</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact-story">
+            <div class="story-meta">
+                <h3 class="company-name">7FinCorp Group</h3>
+                <span class="tenure">2021 – 2023</span>
+            </div>
+            <p class="role-description">Orchestrating FP&A across five distinct business units</p>
+            <p class="story-text">
+                At 7FinCorp, I managed the full financial planning lifecycle for multiple business units simultaneously—from budget construction to monthly close coordination. The challenge wasn't just volume; it was creating a unified planning framework that could flex across different revenue models and cost structures. I built an integrated financial model that became the CFO's go-to tool for board presentations, complete with scenario toggles that let leadership stress-test assumptions in real time.
+            </p>
+            <p class="story-text">
+                But some of my proudest work was forensic: diving deep into the data warehouse to trace misallocated overhead and revenue discrepancies that had compounded over 18 months. I also automated significant portions of our month-end reporting using VBA, eliminating hours of manual reconciliation and virtually erasing reporting errors. The result? A tighter, faster close process and capital allocation decisions backed by cleaner data.
+            </p>
+            <div class="metrics-showcase">
+                <div class="metric">
+                    <span class="metric-value">$2.6M</span>
+                    <span class="metric-label">Errors uncovered</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">40%</span>
+                    <span class="metric-label">Planning time reduced</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">14hrs</span>
+                    <span class="metric-label">Saved per close cycle</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">5/7</span>
+                    <span class="metric-label">CAPEX projects approved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-number">02</div>
+            <h2 class="section-title">Core competencies</h2>
+            <p class="section-subtitle">The technical foundations and strategic capabilities that drive my work.</p>
+        </div>
+
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">📊</div>
+                <h4 class="expertise-title">Financial modeling & scenario planning</h4>
+                <p class="expertise-description">Crafting integrated three-statement models with dynamic scenario toggles. Expertise in DCF analysis, NPV/IRR frameworks, and Monte Carlo simulations for stress-testing assumptions under uncertainty.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">🎯</div>
+                <h4 class="expertise-title">Driver-based forecasting</h4>
+                <p class="expertise-description">Moving beyond static projections to models anchored in operational drivers—volume mix, pricing elasticity, and cost-to-serve metrics that reflect how the business actually operates.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">🔍</div>
+                <h4 class="expertise-title">Variance decomposition</h4>
+                <p class="expertise-description">Breaking down performance gaps into price, volume, and mix effects. Translating variance analysis into strategic narratives that guide pricing decisions and resource allocation.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">💼</div>
+                <h4 class="expertise-title">Healthcare supply chain finance</h4>
+                <p class="expertise-description">Deep understanding of segment margin dynamics, distribution cost modeling, and SG&A allocation in complex multi-segment healthcare organizations.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">🛠️</div>
+                <h4 class="expertise-title">Enterprise planning systems</h4>
+                <p class="expertise-description">Hands-on experience implementing and optimizing Workday Adaptive Planning, Oracle ERP, Hyperion/Essbase, and SAP S/4HANA for budgeting and consolidation workflows.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">📈</div>
+                <h4 class="expertise-title">BI & analytics infrastructure</h4>
+                <p class="expertise-description">Building executive dashboards in Power BI and Tableau with DAX measures that track EBITDA, gross margin trends, and operating expense ratios in real time.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">⚙️</div>
+                <h4 class="expertise-title">Excel automation & data engineering</h4>
+                <p class="expertise-description">Advanced proficiency in Power Query, dynamic arrays, and VBA macro development. Comfortable writing SQL for data extraction and Python for statistical analysis.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">✓</div>
+                <h4 class="expertise-title">Compliance & controls</h4>
+                <p class="expertise-description">Ensuring GAAP alignment and SOX compliance throughout the close process. Experience partnering with audit teams to document control environments and maintain clean reporting.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-header">
+            <div class="section-number">03</div>
+            <h2 class="section-title">Educational foundation</h2>
+            <p class="section-subtitle">Combining analytical rigor with technical depth.</p>
+        </div>
+
+        <div class="impact-story">
+            <div class="story-meta">
+                <h3 class="company-name">Syracuse University</h3>
+                <span class="tenure">2023 – 2025</span>
+            </div>
+            <p class="role-description">Master of Science in Information Systems</p>
+            <p class="story-text">
+                Currently completing my graduate degree, where I'm deepening my expertise in data architecture, systems integration, and advanced analytics—skills that directly enhance how I design financial models and reporting infrastructure.
+            </p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Let's build something together</h2>
+            <p class="cta-text">
+                Whether you're looking to refine your planning process, improve forecast accuracy, or build financial frameworks that scale with your organization—I'd love to connect and explore how I can contribute.
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:prathamesh.p@techsmail.com" class="btn btn-primary">Get in touch</a>
+                <a href="https://www.linkedin.com/in/prathmeshpawar" target="_blank" class="btn btn-secondary">View LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Prathmesh Pawar — Designed with intention</p>
+    </footer>
+</body>
+</html>
